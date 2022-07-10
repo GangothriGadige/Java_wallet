@@ -17,5 +17,13 @@ public class CurrencyTest {
 
         assertThat(seventyFourRupeesEightyFivePaisa, is(equalTo(oneDollar)));
     }
+    @Test
+    void shouldReturnResultantMoneyWhenFiveRupeesIsAddedToFiveDollars(){
+        Currency currentMoney=rupee(5);
+        Currency addedMoney=dollar(5);
+        Currency totalMoney=rupee(379.25);
+
+        assertThat(currentMoney.plus(addedMoney), is(equalTo(totalMoney)));
+    }
 
 }

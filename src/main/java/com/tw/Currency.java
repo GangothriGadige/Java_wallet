@@ -32,8 +32,11 @@ public class Currency {
         return new Currency(value, CurrencyType.dollar);
     }
 
-    public double convertToRupees() {
-        return value * (CurrencyType.rupee.baseValue / currencyType.baseValue);
+    public double convertToPreferredCurrency( CurrencyType preferredCurrency ) {
+        return value * (preferredCurrency.baseValue/currencyType.baseValue);
+    }
+    public Currency plus(Currency moneyToBeConverted){
+        return new Currency(value+moneyToBeConverted.convertToPreferredCurrency(currencyType),currencyType);
     }
 
     @Override
@@ -41,7 +44,7 @@ public class Currency {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Currency that = (Currency) o;
-        return this.convertToRupees() == that.convertToRupees();
+        return this.convertToPreferredCurrency(CurrencyType.rupee)==that.convertToPreferredCurrency(CurrencyType.rupee);
     }
 
     @Override
