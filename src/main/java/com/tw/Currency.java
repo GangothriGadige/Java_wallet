@@ -38,6 +38,9 @@ public class Currency {
     public Currency plus(Currency moneyToBeConverted){
         return new Currency(value+moneyToBeConverted.convertToPreferredCurrency(currencyType),currencyType);
     }
+    public Currency minus(Currency moneyToBeConverted){
+        return new Currency(value-moneyToBeConverted.convertToPreferredCurrency(currencyType),currencyType);
+    }
 
     @Override
     public boolean equals(Object o) {

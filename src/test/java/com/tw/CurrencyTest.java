@@ -28,22 +28,31 @@ public class CurrencyTest {
     @Test
     void shouldReturnOneHundredTwentyFourEightyFivePaisaWhenFiftyRupeesAndOneDollarAreAdded(){
         Currency fiftyRupees=rupee(50);
-        Currency OneDollar=dollar(1);
+        Currency oneDollar=dollar(1);
         Currency emptyWallet=rupee(0);
-        Currency OneHundredTwentyFourEightyFivePaisa=rupee(124.85);
+        Currency oneHundredTwentyFourEightyFivePaisa=rupee(124.85);
 
-        assertThat(fiftyRupees.plus(OneDollar.plus(emptyWallet)), is(equalTo(OneHundredTwentyFourEightyFivePaisa)));
+        assertThat(fiftyRupees.plus(oneDollar.plus(emptyWallet)), is(equalTo(oneHundredTwentyFourEightyFivePaisa)));
 
     }
-    Test
+    @Test
     void shouldReturnFourDollarsWhenSeventyFourRupeesEightyFivePaisaAndOneDollarAndOneHundredFourtyNineRupeesSevenPaisaAreAdded(){
-        Currency SeventyFourRupeesEightyFivePaisa=rupee(74.85);
-        Currency OneDollar=dollar(1);
-        Currency OneHundredFourtyNineRupeesSevenPaisa=rupee(149.7);
+        Currency seventyFourRupeesEightyFivePaisa=rupee(74.85);
+        Currency oneDollar=dollar(1);
+        Currency oneHundredFourtyNineRupeesSevenPaisa=rupee(149.7);
         Currency emptyWallet=dollar(0);
         Currency fourDollars=dollar(4);
 
-        assertThat(SeventyFourRupeesEightyFivePaisa.plus(OneDollar.plus(OneHundredFourtyNineRupeesSevenPaisa.plus(emptyWallet))), is(equalTo(fourDollars)));
+        assertThat(seventyFourRupeesEightyFivePaisa.plus(oneDollar.plus(oneHundredFourtyNineRupeesSevenPaisa.plus(emptyWallet))), is(equalTo(fourDollars)));
+
+    }
+    @Test
+    void shouldReturnRemainingMoneyWhenSpecifiedAmountOfMoneyIsTakenOut(){
+        Currency currentMoney=rupee(149.7);
+        Currency specifiedMoney=dollar(1);
+        Currency remainingMoney=dollar(1);
+
+        assertThat(currentMoney.minus(specifiedMoney), is(equalTo(remainingMoney)));
 
     }
 
